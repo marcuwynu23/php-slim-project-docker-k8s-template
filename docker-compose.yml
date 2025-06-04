@@ -1,0 +1,18 @@
+volumes:
+  logs:
+    driver: local
+
+services:
+  slim:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: myslimapp:latest
+    working_dir: /var/www
+    environment:
+      docker: "true"
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:/var/www
+      - logs:/var/www/logs
